@@ -28,8 +28,6 @@ const watchSubmit = () => {
 const reset = () => {
   const list = document.querySelector(".js-card-list")
   list.innerHTML = ""
-  const pronoum = document.querySelector(".card__sound")
-  pronoum.innerHTML = ""
   
 }
 
@@ -55,7 +53,7 @@ const extractData = (data) => {
   // 2-Ecriture phonetique
   const phonetic = findProp(data.phonetics, "text");
   // 3-Prononciation
-  const pronoum = findProp(data.phonetics, "audio");
+  let pronoum = findProp(data.phonetics, "audio");
   // 4-Définition(s)
   const meanings = data.meanings;
   return {
@@ -109,7 +107,7 @@ const renderToHtml = (data) => {
     }
     // Ajout de l'audio en JS
     const button = document.querySelector('.js-card-button')
-    const audio = new Audio(data.pronoum)
+    audio = new Audio(data.pronoum)
     button.addEventListener('click', () => {
       button.classList.remove("card__player--off")
       button.classList.add("card__player--on")
